@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Loading the uuv_simulator xacros -->
+    <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro" />
+    <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro" />
+    <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro" />
+   
+    <xacro:include filename="$(find O_29qt)/urdf/snippets.xacro"/>
+
+    <!-- Structure of base of vehicle -->
+    <xacro:macro name="O_29qt_base" params="namespace *gazebo inertial_reference_frame">
+    <!--<xacro:macro name="O_29qt_base" params="namespace inertial_reference_frame">-->
+        <!--<link name="world" />
+
+        <joint name="dummy_joint" type="fixed">
+            <parent link="world" />
+            <child link="${namespace}/base_link" />
+        </joint>-->
+
+        <link name="${namespace}/base_link">
+            <inertial>
+                <!--<origin rpy="0 0 0" xyz="0 0 0"/>-->
+                <origin rpy="0 0 0" xyz="0 0 0.0086"/>
+                <!--<mass value="819026.342183402"/>-->
+                <mass value="81.9"/>
+                <!--<inertia ixx="1439809.19440102" ixy="205163.256495052" ixz="-240460.141925145" iyy="24924095.2244092" iyz="-3294.60477684522" izz="25510047.9278752"/>-->
+                <inertia ixx="0.82" ixy="0.0" ixz="0.0" iyy="30.14" iyz="0.0" izz="30.14"/>
+            </inertial>
+            <visual>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <geometry>
+                  <mesh filename="package://O_29qt/meshes/base_link_ano.STL"/>
+              </geometry>
+              <material name="">
+                <color rgba="1 0.0588235294117647 0.458823529411765 1"/>
+              </material>
+            </visual>
+            <collision>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <geometry>
+                <mesh filename="package://O_29qt/meshes/base_link_ano.STL"/>
+              </geometry>
+            </collision>
+        </link> 
+        
+        <!-- <link name="${namespace}/base_link">
+            <inertial>
+              <origin rpy="0 0 0" xyz="4.07474419314708 -0.0300724743266745 -2.34408677014207"/>
+              <mass value="819026.342183402"/>
+              <inertia ixx="1439809.19440102" ixy="205163.256495052" ixz="-240460.141925145" iyy="24924095.2244092" iyz="-3294.60477684522" izz="25510047.9278752"/>
+            </inertial>                                                                                  
+            <visual>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <geometry>
+                  <mesh filename="package://O_29qt/meshes/base_link.STL"/>
+                  <mesh filename="package://O_29qt/meshes/QT1.STL"/>
+                  <mesh filename="package://O_29qt/meshes/base_link_ano.STL"/>
+              </geometry>
+              <material name="">
+                <color rgba="1 0.0588235294117647 0.458823529411765 1"/>
+              </material>
+            </visual>
+            <collision>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <geometry>
+                <mesh filename="package://O_29qt/meshes/base_link.STL"/>
+              </geometry>
+            </collision>
+        </link>-->
+
+        <gazebo reference="${namespace}/base_link">
+            <selfCollide>false</selfCollide>
+        </gazebo>
+
+
+        <xacro:insert_block name="gazebo" />
+
+        <!-- Include the thruster modules -->
+        <xacro:include filename="$(find O_29qt)/urdf/actuators.xacro"/>
+        <!-- Include the sensor modules -->
+        <xacro:include filename="$(find O_29qt)/urdf/sensors.xacro"/>
+        
+    </xacro:macro>
+</robot>

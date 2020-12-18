@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Mount a GPS -->
+    <xacro:default_gps namespace="${namespace}" parent_link="${namespace}/base_link" />
+
+    <!-- Mount a Virtual Pose Sensor -->
+    <!--<xacro:pose_3d_macro
+            namespace="${namespace}"
+            parent_link="${namespace}/base_link"
+            topic="pose_gt"
+            update_rate="10"
+            noise_sigma="0.0"
+            noise_amplitude="0.0"
+            suffix=""
+            reference_frame="world"
+            publish_ned_odom="false">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:pose_3d_macro>-->
+
+    
+    <xacro:default_pose_3d_macro
+        namespace="${namespace}"
+        parent_link="${namespace}/base_link"
+        inertial_reference_frame="${inertial_reference_frame}" />
+
+    <!-- Mount a Virtual Pose Sensor -->
+    <!-- <xacro:pose_3d_macro
+        namespace="{namespace}"
+        parent_link="${namespace}/base_link"
+        topic="pose_gt"
+        update_rate="10"
+        noise_sigma="0.0"
+        noise_amplitude="0.0"
+        suffix=""
+        reference_frame="world"
+        publish_ned_odom="false">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:pose_3d_macro>-->
+
+    <!-- Mount an IMU -->
+    <!-- adis16448 imu. -->
+    <xacro:macro name="Imu" params="namespace parent_link *origin">
+        <xacro:imu_plugin_macro
+            namespace="${namespace}"
+            imu_suffix=""
+            parent_link="${parent_link}"
+            imu_topic="imu"
+            mass_imu_sensor="0.001"
+            gyroscope_noise_density="0.0003394"
+            gyroscope_random_walk="0.000038785"
+            gyroscope_bias_correlation_time="1000.0"
+            gyroscope_turn_on_bias_sigma="0.0087"
+            accelerometer_noise_density="0.004"
+            accelerometer_random_walk="0.006"
+            accelerometer_bias_correlation_time="300.0"
+            accelerometer_turn_on_bias_sigma="0.1960"
+            orientation_noise="0.01"
+            enable_local_ned_frame="false"
+            reference_frame="world"
+            update_rate="50">
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:imu_plugin_macro>
+    </xacro:macro>
+
+    <xacro:Imu namespace="${namespace}" parent_link="${namespace}/base_link">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:Imu>
+    
+    <!-- DVL  -->
+    <xacro:default_dvl namespace="${namespace}" parent_link="${namespace}/base_link">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:default_dvl>
+
+    <!-- Mount a Pressure Sensor -->
+    <xacro:macro name="Pressure" params="namespace parent_link *origin">
+      <xacro:pressure_plugin_macro
+        namespace="${namespace}"
+        suffix=""
+        parent_link="${parent_link}"
+        topic="pressure"
+        mass="0.001"
+        update_rate="10"
+        range="30000"
+        noise_sigma="3.0"
+        noise_amplitude="0.0"
+        estimateDepth="false"
+        standardPressure="101.325"
+        kPaPerM="9.80638">
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:pressure_plugin_macro>
+    </xacro:macro>
+    
+    <xacro:Pressure namespace="${namespace}" parent_link="${namespace}/base_link">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:Pressure>
+
+</robot>
