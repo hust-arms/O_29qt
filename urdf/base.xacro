@@ -19,12 +19,14 @@
 
         <link name="${namespace}/base_link">
             <inertial>
-                <!--<origin rpy="0 0 0" xyz="0 0 0"/>-->
-                <origin rpy="0 0 0" xyz="0 0 0.0086"/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <!--<origin rpy="0 0 0" xyz="0 0 0.0086"/>-->
                 <!--<mass value="819026.342183402"/>-->
-                <mass value="81.9"/>
+                <!--<mass value="81.9"/>-->
+                <mass value="4390"/>
                 <!--<inertia ixx="1439809.19440102" ixy="205163.256495052" ixz="-240460.141925145" iyy="24924095.2244092" iyz="-3294.60477684522" izz="25510047.9278752"/>-->
-                <inertia ixx="0.82" ixy="0.0" ixz="0.0" iyy="30.14" iyz="0.0" izz="30.14"/>
+                <!--<inertia ixx="0.82" ixy="0.0" ixz="0.0" iyy="30.14" iyz="0.0" izz="30.14"/>-->
+                <inertia ixx="1315" ixy="0.0" ixz="0.0" iyy="5900" iyz="0.0" izz="4605"/>
             </inertial>
             <visual>
               <origin rpy="0 0 0" xyz="0 0 0"/>
