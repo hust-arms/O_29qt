@@ -48,10 +48,10 @@
                 <clampMin>-2300</clampMin>
                 
                 <!-- Maximum thrust force output allowed -->
-                <thrustMax>125</thrustMax>
+                <thrustMax>1250</thrustMax>
                 
                 <!-- Minimum thrust force output allowed -->
-                <thrustMin>-125</thrustMin>
+                <thrustMin>-1250</thrustMin>
                 
                 <!--
                 Value from 0 to 1 to set the efficiency of the output thrus
@@ -89,8 +89,8 @@
                 </conversion>-->
                 <conversion>
                     <type>LinearInterp</type>
-                    <inputValues>888 1500 1700 1900 2100 2300</inputValues>
-                    <outputValues>0 55 70 88 105 125</outputValues>
+                    <inputValues>0 500 1000 1500 2000 2500</inputValues>
+                    <outputValues>0 1053.5524 4214.2097 9481.9719 16856.839 26338.811</outputValues>
                 </conversion>
 
             </plugin>
@@ -111,15 +111,15 @@
   <xacro:property name="fin_rho" value="1025"/>
 
   <!--<xacro:property name="front_fin_area" value="2.9153726"/>-->
-  <xacro:property name="front_fin_area" value="0.0127"/>
+  <!--<xacro:property name="front_fin_area" value="0.0127"/>-->
+  <xacro:property name="front_fin_area" value="0.785"/>
   <xacro:property name="front_fin_lift_coefficient" value="20.843"/>
   <xacro:property name="front_fin_drag_coefficient" value="1.98"/>
 
   <xacro:macro name="front_fin_macro" params="namespace fin_id *origin mesh_filename">
       <xacro:fin_quadratic_macro
         namespace="${namespace}"
-        parent_link="${namespace}/base_link"
-        fin_id="${fin_id}"
+        parent_link="${namespace}/base_link" fin_id="${fin_id}"
         min_joint_limit="${-90.0 * d2r}"
         max_joint_limit="${90.0 * d2r}"
         mesh_filename="${mesh_filename}"
@@ -132,7 +132,8 @@
   </xacro:macro>
 
   <!--<xacro:property name="aft_fin_area" value="2.656049"/>-->
-  <xacro:property name="aft_fin_area" value="0.0172"/>
+  <!--<xacro:property name="aft_fin_area" value="0.0172"/>-->
+  <xacro:property name="aft_fin_area" value="0.785"/>
   <xacro:property name="aft_fin_lift_coefficient" value="19.1395"/>
   <xacro:property name="aft_fin_drag_coefficient" value="1.98"/>
 
