@@ -6,8 +6,8 @@
 
     <!-- Vehicle's actual volume (Gazebo cannot compute the volume out of the mesh) -->
     <!--<xacro:property name="O_29qt_volume" value="${819026 / 9.8 / 1000}"/>-->
-    <xacro:property name="O_29qt_volume" value="${838 / 9.8 / 1000}"/>
-    <!--<xacro:property name="O_29qt_volume" value="${4690 / 1000}"/>-->
+    <!--<xacro:property name="O_29qt_volume" value="${838 / 9.8 / 1000}"/>-->
+    <xacro:property name="O_29qt_volume" value="${4690 / 1000}"/>
 
     <!-- Describing the dimensions of the vehicle's bounding box -->
     <!--<xacro:property name="O_29qt_length" value="40.97"/>
@@ -16,16 +16,16 @@
     <xacro:property name="O_29qt_height" value="4.923"/>-->
     
     <!-- Added base parameters(ARMSAUA) -->
-    <xacro:property name="O_29qt_length" value="2.712"/>
+    <!--<xacro:property name="O_29qt_length" value="2.712"/>
     <xacro:property name="O_29qt_width"  value="0.935"/>
     <xacro:property name="O_29qt_radius"  value="0.120"/>
-    <xacro:property name="O_29qt_height" value="0.484"/>
+    <xacro:property name="O_29qt_height" value="0.484"/>-->
     
     <!-- Added base parameters -->
-    <!--<xacro:property name="O_29qt_length" value="8.534"/>
+    <xacro:property name="O_29qt_length" value="8.534"/>
     <xacro:property name="O_29qt_width"  value="2.94525"/>
     <xacro:property name="O_29qt_radius"  value="0.5128"/>
-    <xacro:property name="O_29qt_height" value="1.5246"/>-->
+    <xacro:property name="O_29qt_height" value="1.5246"/>
     
     <xacro:property name="rho" value="1025" />
     <xacro:property name="D0" value="${rho * 0.5}"/>
@@ -147,22 +147,22 @@
         <!-- 1) Fossen's equation of motion -->
         <hydrodynamic_model>
           <type>fossen</type>
-          <!--<added_mass>
+          <added_mass>
               ${-xudot*D3*0.1}      ${-xvdot*D3*0.1}       ${-xwdot*D3*0.1}       ${-xpdot*D4*0.1}      ${-xqdot*D4*0.1}      ${-xrdot*D4*0.1}
               ${-yudot*D3*0.1}      ${-yvdot*D3*0.1}       ${-ywdot*D3*0.1}       ${-ypdot*D4*0.1}      ${-yqdot*D4*0.1}      ${-yrdot*D4*0.1}
               ${-zudot*D3*0.1}      ${-zvdot*D3*0.1}       ${-zwdot*D3*0.1}       ${-zpdot*D4*0.1}      ${-zqdot*D4*0.1}      ${-zrdot*D4*0.1}
               ${-kudot*D4*0.1}      ${-kvdot*D4*0.1}       ${-kwdot*D4*0.1}       ${-kpdot*D5*0.1}      ${-kqdot*D5*0.1}      ${-krdot*D5*0.1}
               ${-mudot*D4*0.1}      ${-mvdot*D4*0.1}       ${-mwdot*D4*0.1}       ${-mpdot*D5*0.1}      ${-mqdot*D5*0.1}      ${-mrdot*D5*0.1}
               ${-nudot*D4*0.1}      ${-nvdot*D4*0.1}       ${-nwdot*D4*0.1}       ${-npdot*D5*0.1}      ${-nqdot*D5*0.1}      ${-nrdot*D5*0.1}
-          </added_mass>-->
-          <added_mass>
+          </added_mass>
+          <!--<added_mass>
             1.432   0       0       0     0      0
             0    120.645    0       0     0    4.895
             0       0    130.513    0  -16.488   0
             0       0       0    0.386    0      0
             0       0   -16.488     0  78.266    0
             0     4.895     0       0     0    67.489
-          </added_mass>
+          </added_mass>-->
 
           <!--
             The linear damping coefficients can be provided as a diagonal (6 elements)
@@ -189,22 +189,22 @@
             The quadratic damping coefficients can be provided as a diagonal (6 elements)
             or a full matrix (36 coefficients), like the added-mass coefficients above
           -->
-          <!--<quadratic_damping>
+          <quadratic_damping>
               ${xuu*D2}      ${xuv*D2}       ${xuw*D2}       ${xup*D3}      ${xuq*D3}      ${xur*D3}
               ${yuu*D2}      ${yuv*D2}       ${yuw*D2}       ${yup*D3}      ${yuq*D3}      ${yur*D3}
               ${zuu*D2}      ${zuv*D2}       ${zuw*D2}       ${zup*D3}      ${zuq*D3}      ${zur*D3}
               ${kuu*D3}      ${kuv*D3}       ${kuw*D3}       ${kup*D4}      ${kuq*D4}      ${kur*D4}
               ${muu*D3}      ${muv*D3}       ${muw*D3}       ${mup*D4}      ${muq*D4}      ${mur*D4}
               ${nuu*D3}      ${nuv*D3}       ${nuw*D3}       ${nup*D4}      ${nuq*D4}      ${nur*D4}
-          </quadratic_damping>-->
-          <quadratic_damping>
+          </quadratic_damping>
+          <!--<quadratic_damping>
             -3.9     0      0      0     0      0
               0  -373.287   0      0     0   -4.204
               0      0  -489.07    0  23.016    0
               0      0      0   -0.117   0      0
               0      0   23.342    0 -353.406   0
               0   0.419     0      0     0  -227.024
-          </quadratic_damping>
+          </quadratic_damping>-->
         </hydrodynamic_model>
       </link>
     </xacro:macro>
