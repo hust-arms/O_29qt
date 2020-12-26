@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot name="O_29qt" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:arg name="debug" default="0" />
+    <xacro:arg name="namespace" default="O_29qt" />
+    <xacro:arg name="intertial_reference_frame" default="world"/>
+    <!-- Include the macro file -->
+    <xacro:include filename="$(find O_29qt)/urdf/base_original.xacro" />
+    <xacro:include filename="$(find O_29qt)/urdf/gazebo_original.xacro" />
+
+    <xacro:O_29qt_base namespace="$(arg namespace)" inertial_reference_frame="$(arg inertial_reference_frame)">
+        <gazebo>
+            <plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+                <fluid_density>1025.0</fluid_density>
+                <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+                <debug>$(arg debug)</debug>
+                <xacro:O_29qt_hydro_model namespace="$(arg namespace)"/>
+            </plugin>
+        </gazebo>
+    </xacro:O_29qt_base>
+
+    <!-- Joint state publisher plugin -->
+    <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="10" />
+
+</robot>
