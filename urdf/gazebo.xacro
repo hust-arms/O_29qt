@@ -24,9 +24,9 @@
     
     <!-- Added base parameters -->
     <xacro:property name="O_29qt_length" value="8.534"/>
-    <xacro:property name="O_29qt_width"  value="2.94525"/>
+    <xacro:property name="O_29qt_width"  value="1.0256"/>
     <xacro:property name="O_29qt_radius"  value="0.5128"/>
-    <xacro:property name="O_29qt_height" value="1.5246"/>
+    <xacro:property name="O_29qt_height" value="1.0256"/>
     
     <xacro:property name="rho" value="1025" />
     <xacro:property name="D0" value="${rho * 0.5}"/>
