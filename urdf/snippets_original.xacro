@@ -104,11 +104,7 @@
     <!-- MACRO FOR FIN/RUDDER UNITS  -->
 
   <!-- A separate mesh for the fin should be stored in the meshes folder -->
-  <!--<xacro:property name="front_fin_mesh_file" value="file://$(find O_29qt)/meshes/front_fin_latest.STL"/>-->
-  <!--<xacro:property name="aft_fin_mesh_file" value="file://$(find O_29qt)/meshes/aft_fin_latest.STL"/>-->
-  
   <xacro:property name="front_left_fin_mesh_file" value="file://$(find O_29qt)/meshes/front_fin_left_new.dae"/>
-  <!--<xacro:property name="front_left_fin_mesh_file" value="file://$(find O_29qt)/meshes/horizontal_fin.dae"/>-->
   <xacro:property name="back_up_fin_mesh_file" value="file://$(find O_29qt)/meshes/back_fin_up_new.dae"/>
 
   <!-- Fin properties -->
@@ -121,13 +117,18 @@
 
   <xacro:macro name="front_left_fin_macro" params="namespace fin_id *origin *axiz mesh_filename">
     <link name="${namespace}/fin${fin_id}">
-      <xacro:no_inertial/>
+      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
               <mesh filename="${mesh_filename}" scale="1 1 1"/>
           </geometry>
       </visual>
+      <inertial>
+          <mass value="0.001" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001" />
+      </inertial>
     </link>
     <joint name="${namespace}/fin${fin_id}_joint" type="revolute">
       <limit effort="0" lower="${-90*d2r}" upper="${90*d2r}" velocity="0"/>
@@ -165,13 +166,20 @@
     </joint>
     
     <link name="${namespace}/fin${fin_id}">
-      <xacro:no_inertial/>
+      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
               <mesh filename="${mesh_filename}" scale="1 -1 1"/>
           </geometry>
       </visual>
+      <inertial>
+          <mass value="0.001" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <inertia ixx="0.000000001" ixy="0.0" ixz="0.0"
+              iyy="0.000000001" iyz="0.0"
+              izz="0.000000001" />
+      </inertial>
     </link>
     
     <gazebo>
@@ -200,13 +208,18 @@
 
   <xacro:macro name="back_up_fin_macro" params="namespace fin_id *origin mesh_filename">
     <link name="${namespace}/fin${fin_id}">
-      <xacro:no_inertial/>
+      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
               <mesh filename="${mesh_filename}" scale="1 1 1"/>
           </geometry>
       </visual>
+      <inertial>
+          <mass value="0.001" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001" />
+      </inertial>
     </link>
     <joint name="${namespace}/fin${fin_id}_joint" type="revolute">
       <limit effort="0" lower="${-90*d2r}" upper="${90*d2r}" velocity="0"/>
@@ -236,13 +249,18 @@
 
   <xacro:macro name="back_down_fin_macro" params="namespace fin_id *origin mesh_filename">
     <link name="${namespace}/fin${fin_id}">
-      <xacro:no_inertial/>
+      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
               <mesh filename="${mesh_filename}" scale="1 1 -1"/>
           </geometry>
       </visual>
+      <inertial>
+          <mass value="0.001" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001" />
+      </inertial>
     </link>
     <joint name="${namespace}/fin${fin_id}_joint" type="revolute">
       <limit effort="0" lower="${-90*d2r}" upper="${90*d2r}" velocity="0"/>
