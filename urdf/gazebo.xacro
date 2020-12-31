@@ -5,23 +5,9 @@
     <xacro:property name="O_29qt_cob" value="0 0 0"/>
 
     <!-- Vehicle's actual volume (Gazebo cannot compute the volume out of the mesh) -->
-    <!--<xacro:property name="O_29qt_volume" value="${819026 / 9.8 / 1000}"/>-->
-    <!--<xacro:property name="O_29qt_volume" value="${838 / 9.8 / 1000}"/>-->
     <!--<xacro:property name="O_29qt_volume" value="${4690 / 1000}"/>-->
     <xacro:property name="O_29qt_volume" value="${4390 / 1000}"/>
 
-    <!-- Describing the dimensions of the vehicle's bounding box -->
-    <!--<xacro:property name="O_29qt_length" value="40.97"/>
-    <xacro:property name="O_29qt_width"  value="4.923"/>
-    <xacro:property name="O_29qt_radius"  value="2.4615"/>
-    <xacro:property name="O_29qt_height" value="4.923"/>-->
-    
-    <!-- Added base parameters(ARMSAUA) -->
-    <!--<xacro:property name="O_29qt_length" value="2.712"/>
-    <xacro:property name="O_29qt_width"  value="0.935"/>
-    <xacro:property name="O_29qt_radius"  value="0.120"/>
-    <xacro:property name="O_29qt_height" value="0.484"/>-->
-    
     <!-- Added base parameters -->
     <xacro:property name="O_29qt_length" value="8.534"/>
     <xacro:property name="O_29qt_width"  value="1.0256"/>

@@ -42,16 +42,16 @@
                 <gain>1</gain>
                 
                 <!-- Maximum allowed input value for the input signal for thruster unit -->
-                <clampMax>2300</clampMax>
+                <clampMax>2500</clampMax>
                 
                 <!-- Minimum allowed input value for the input signal for thruster unit -->
-                <clampMin>-2300</clampMin>
+                <clampMin>-2500</clampMin>
                 
                 <!-- Maximum thrust force output allowed -->
-                <thrustMax>26338.811</thrustMax>
+                <thrustMax>263388.11</thrustMax>
                 
                 <!-- Minimum thrust force output allowed -->
-                <thrustMin>-26338.811</thrustMin>
+                <thrustMin>-263388.11</thrustMin>
                 
                 <!--
                 Value from 0 to 1 to set the efficiency of the output thrus
@@ -90,7 +90,7 @@
                 <conversion>
                     <type>LinearInterp</type>
                     <inputValues>0 500 1000 1500 2000 2500</inputValues>
-                    <outputValues>0 1053.5524 4214.2097 9481.9719 16856.839 26338.811</outputValues>
+                    <outputValues>0 10535.524 42142.097 94819.719 168568.39 263388.11</outputValues>
                 </conversion>
 
             </plugin>
@@ -105,19 +105,33 @@
 
   <!-- A separate mesh for the fin should be stored in the meshes folder -->
   <xacro:property name="front_left_fin_mesh_file" value="file://$(find O_29qt)/meshes/front_fin_left_new.dae"/>
+  <xacro:property name="front_right_fin_mesh_file" value="file://$(find O_29qt)/meshes/front_fin_right_new.dae"/>
   <xacro:property name="back_up_fin_mesh_file" value="file://$(find O_29qt)/meshes/back_fin_up_new.dae"/>
+  <xacro:property name="back_down_fin_mesh_file" value="file://$(find O_29qt)/meshes/back_fin_down_new.dae"/>
 
   <!-- Fin properties -->
   <xacro:property name="fin_rho" value="1025"/>
 
   <xacro:property name="front_fin_area" value="2.9153726"/>
-  <!--<xacro:property name="front_fin_area" value="0.785"/>-->
-  <xacro:property name="front_fin_lift_coefficient" value="20.843"/>
-  <xacro:property name="front_fin_drag_coefficient" value="1.98"/>
+  <xacro:property name="front_fin_lift_coefficient" value="1.668475641"/>
+  <xacro:property name="front_fin_drag_coefficient" value="0.26542681"/>
 
-  <xacro:macro name="front_left_fin_macro" params="namespace fin_id *origin *axiz mesh_filename">
-    <link name="${namespace}/fin${fin_id}">
-      <!--<xacro:no_inertial/>-->
+  <xacro:macro name="front_left_fin_macro" params="namespace fin_id *origin mesh_filename">
+    <xacro:hor_left_fin_quadratic_macro
+        namespace="${namespace}"
+        parent_link="${namespace}/base_link"
+        fin_id="${fin_id}"
+        min_joint_limit="${-90.0*d2r}"
+        max_joint_limit="${90.0*d2r}"
+        mesh_filename="${mesh_filename}"
+        fin_dynamics_time_constant="0.2"
+        lift_constant="${0.5 * fin_rho * front_fin_area * front_fin_lift_coefficient}"
+        drag_constant="${0.5 * fin_rho * front_fin_area * front_fin_drag_coefficient}"
+        current_velocity_topic="current_velocity">
+        <xacro:insert_block name="origin"/>
+    </xacro:hor_left_fin_quadratic_macro>
+      
+    <!--<link name="${namespace}/fin${fin_id}">
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
@@ -153,10 +167,26 @@
           <link_name>${namespace}/fin${fin_id}</link_name>
           <joint_name>${namespace}/fin${fin_id}_joint</joint_name>
       </plugin>
-    </gazebo>
+    </gazebo>-->
   </xacro:macro>
 
-  <xacro:macro name="front_right_fin_macro" params="namespace fin_id *origin *axiz mesh_filename">
+  <xacro:macro name="front_right_fin_macro" params="namespace fin_id *origin mesh_filename">
+    <xacro:hor_right_fin_quadratic_macro
+        namespace="${namespace}"
+        parent_link="${namespace}/base_link"
+        fin_id="${fin_id}"
+        min_joint_limit="${-90.0*d2r}"
+        max_joint_limit="${90.0*d2r}"
+        mesh_filename="${mesh_filename}"
+        fin_dynamics_time_constant="0.2"
+        lift_constant="${0.5 * fin_rho * front_fin_area * front_fin_lift_coefficient}"
+        drag_constant="${0.5 * fin_rho * front_fin_area * front_fin_drag_coefficient}"
+        current_velocity_topic="current_velocity">
+        <xacro:insert_block name="origin"/>
+    </xacro:hor_right_fin_quadratic_macro>
+
+    <!--<link name="${namespace}/fin${fin_id}">
+      <visual>
     <joint name="${namespace}/fin${fin_id}_joint" type="revolute">
       <limit effort="0" lower="${-90*d2r}" upper="${90*d2r}" velocity="0"/>
       <xacro:insert_block name="origin"/>
@@ -166,7 +196,6 @@
     </joint>
     
     <link name="${namespace}/fin${fin_id}">
-      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
@@ -198,17 +227,32 @@
           <link_name>${namespace}/fin${fin_id}</link_name>
           <joint_name>${namespace}/fin${fin_id}_joint</joint_name>
       </plugin>
-    </gazebo>
+    </gazebo>-->
   </xacro:macro>
   
   <xacro:property name="aft_fin_area" value="2.656049"/>
   <!--<xacro:property name="aft_fin_area" value="0.785"/>-->
-  <xacro:property name="aft_fin_lift_coefficient" value="19.1395"/>
-  <xacro:property name="aft_fin_drag_coefficient" value="1.98"/>
+  <xacro:property name="aft_fin_lift_coefficient" value="1.74975211"/>
+  <xacro:property name="aft_fin_drag_coefficient" value="0.269448395"/>
 
   <xacro:macro name="back_up_fin_macro" params="namespace fin_id *origin mesh_filename">
+    <xacro:lat_up_fin_quadratic_macro
+        namespace="${namespace}"
+        parent_link="${namespace}/base_link"
+        fin_id="${fin_id}"
+        min_joint_limit="${-90.0*d2r}"
+        max_joint_limit="${90.0*d2r}"
+        mesh_filename="${mesh_filename}"
+        fin_dynamics_time_constant="0.2"
+        lift_constant="${0.5 * fin_rho * aft_fin_area * aft_fin_lift_coefficient}"
+        drag_constant="${0.5 * fin_rho * aft_fin_area * aft_fin_drag_coefficient}"
+        current_velocity_topic="current_velocity">
+        <xacro:insert_block name="origin"/>
+    </xacro:lat_up_fin_quadratic_macro>
+      
+    <!--<link name="${namespace}/fin${fin_id}">
+      <visual>
     <link name="${namespace}/fin${fin_id}">
-      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
@@ -244,12 +288,27 @@
           <link_name>${namespace}/fin${fin_id}</link_name>
           <joint_name>${namespace}/fin${fin_id}_joint</joint_name>
       </plugin>
-    </gazebo>
+    </gazebo>-->
   </xacro:macro>
 
   <xacro:macro name="back_down_fin_macro" params="namespace fin_id *origin mesh_filename">
+    <xacro:lat_down_fin_quadratic_macro
+        namespace="${namespace}"
+        parent_link="${namespace}/base_link"
+        fin_id="${fin_id}"
+        min_joint_limit="${-90.0*d2r}"
+        max_joint_limit="${90.0*d2r}"
+        mesh_filename="${mesh_filename}"
+        fin_dynamics_time_constant="0.2"
+        lift_constant="${0.5 * fin_rho * aft_fin_area * aft_fin_lift_coefficient}"
+        drag_constant="${0.5 * fin_rho * aft_fin_area * aft_fin_drag_coefficient}"
+        current_velocity_topic="current_velocity">
+        <xacro:insert_block name="origin"/>
+    </xacro:lat_down_fin_quadratic_macro>
+      
+    <!--<link name="${namespace}/fin${fin_id}">
+      <visual>
     <link name="${namespace}/fin${fin_id}">
-      <!--<xacro:no_inertial/>-->
       <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
@@ -285,6 +344,6 @@
           <link_name>${namespace}/fin${fin_id}</link_name>
           <joint_name>${namespace}/fin${fin_id}_joint</joint_name>
       </plugin>
-    </gazebo>
+    </gazebo>-->
   </xacro:macro>
 </robot>
