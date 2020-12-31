@@ -90,8 +90,7 @@
     
     <xacro:property name="kuu" value="0.0"/>
     <xacro:property name="kuv" value="0.00406"/>
-    <xacro:property name="kuw" value="0.0"/>
-    <xacro:property name="kup" value="-0.00145"/>
+    <xacro:property name="kuw" value="0.0"/> <xacro:property name="kup" value="-0.00145"/>
     <xacro:property name="kuq" value="0.0"/>
     <xacro:property name="kur" value="-0.000578"/>
     
