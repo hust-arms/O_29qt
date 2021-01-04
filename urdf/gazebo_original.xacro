@@ -132,6 +132,9 @@
 
         <!-- Link's volume -->
         <volume>${O_29qt_volume}</volume>
+        
+        <!-- Add for test 21.01.04--> 
+        <scaling_volume>1.0</scaling_volume>
 
         <!-- Link's bounding box, it is used to recalculate the immersed
         volume when close to the surface.
@@ -165,6 +168,12 @@
               0     4.895     0       0     0    67.489
           </added_mass>-->
 
+          <!-- Add for test 21.01.04--> 
+          <scaling_added_mass>0.1</scaling_added_mass> 
+
+          <!-- Add for test 21.01.04--> 
+          <offset_added_mass>0.0</offset_added_mass>
+
           <!--
             The linear damping coefficients can be provided as a diagonal (6 elements)
             or a full matrix (36 coefficients), like the added-mass coefficients above
@@ -186,6 +195,13 @@
           <linear_damping_forward_speed>
             0 0 0 0 0 0
           </linear_damping_forward_speed>
+
+          <!-- Add for test 21.01.04--> 
+          <offset_linear_damping>0.0</offset_linear_damping>
+          
+          <!-- Add for test 21.01.04--> 
+          <offset_nonlin_damping>0.0</offset_nonlin_damping>
+          
           <!--
             The quadratic damping coefficients can be provided as a diagonal (6 elements)
             or a full matrix (36 coefficients), like the added-mass coefficients above
@@ -206,6 +222,10 @@
                 0      0   23.342    0 -353.406   0
                 0   0.419     0      0     0  -227.024
           </quadratic_damping>-->
+
+          <!-- Add for test 21.01.04--> 
+          <scaling_damping>1.0</scaling_damping> 
+
         </hydrodynamic_model>
       </link>
     </xacro:macro>
