@@ -184,20 +184,17 @@
             This matrix is mostly useful for slender bodies (e.g. AUVs with torpedo shape)
           -->
           <linear_damping_forward_speed>
-            0 0 0 0 0 0
+            ${xuu*D2}      ${xuv*D2}       ${xuw*D2}       ${xup*D3}      ${xuq*D3}      ${xur*D3}
+            ${yuu*D2}      ${yuv*D2}       ${yuw*D2}       ${yup*D3}      ${yuq*D3}      ${yur*D3}
+            ${zuu*D2}      ${zuv*D2}       ${zuw*D2}       ${zup*D3}      ${zuq*D3}      ${zur*D3}
+            ${kuu*D3}      ${kuv*D3}       ${kuw*D3}       ${kup*D4}      ${kuq*D4}      ${kur*D4}
+            ${muu*D3}      ${muv*D3}       ${muw*D3}       ${mup*D4}      ${muq*D4}      ${mur*D4}
+            ${nuu*D3}      ${nuv*D3}       ${nuw*D3}       ${nup*D4}      ${nuq*D4}      ${nur*D4}
           </linear_damping_forward_speed>
           <!--
             The quadratic damping coefficients can be provided as a diagonal (6 elements)
             or a full matrix (36 coefficients), like the added-mass coefficients above
           -->
-          <quadratic_damping>
-              ${xuu*D2}      ${xuv*D2}       ${xuw*D2}       ${xup*D3}      ${xuq*D3}      ${xur*D3}
-              ${yuu*D2}      ${yuv*D2}       ${yuw*D2}       ${yup*D3}      ${yuq*D3}      ${yur*D3}
-              ${zuu*D2}      ${zuv*D2}       ${zuw*D2}       ${zup*D3}      ${zuq*D3}      ${zur*D3}
-              ${kuu*D3}      ${kuv*D3}       ${kuw*D3}       ${kup*D4}      ${kuq*D4}      ${kur*D4}
-              ${muu*D3}      ${muv*D3}       ${muw*D3}       ${mup*D4}      ${muq*D4}      ${mur*D4}
-              ${nuu*D3}      ${nuv*D3}       ${nuw*D3}       ${nup*D4}      ${nuq*D4}      ${nur*D4}
-          </quadratic_damping>
           <!--<quadratic_damping>
             -3.9     0      0      0     0      0
               0  -373.287   0      0     0   -4.204
