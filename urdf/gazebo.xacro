@@ -135,12 +135,12 @@
         <hydrodynamic_model>
           <type>fossen</type>
           <added_mass>
-              ${-xudot*D3*0.1}      ${-xvdot*D3*0.1}       ${-xwdot*D3*0.1}       ${-xpdot*D4*0.1}      ${-xqdot*D4*0.1}      ${-xrdot*D4*0.1}
-              ${-yudot*D3*0.1}      ${-yvdot*D3*0.1}       ${-ywdot*D3*0.1}       ${-ypdot*D4*0.1}      ${-yqdot*D4*0.1}      ${-yrdot*D4*0.1}
-              ${-zudot*D3*0.1}      ${-zvdot*D3*0.1}       ${-zwdot*D3*0.1}       ${-zpdot*D4*0.1}      ${-zqdot*D4*0.1}      ${-zrdot*D4*0.1}
-              ${-kudot*D4*0.1}      ${-kvdot*D4*0.1}       ${-kwdot*D4*0.1}       ${-kpdot*D5*0.1}      ${-kqdot*D5*0.1}      ${-krdot*D5*0.1}
-              ${-mudot*D4*0.1}      ${-mvdot*D4*0.1}       ${-mwdot*D4*0.1}       ${-mpdot*D5*0.1}      ${-mqdot*D5*0.1}      ${-mrdot*D5*0.1}
-              ${-nudot*D4*0.1}      ${-nvdot*D4*0.1}       ${-nwdot*D4*0.1}       ${-npdot*D5*0.1}      ${-nqdot*D5*0.1}      ${-nrdot*D5*0.1}
+              ${xudot*D3*0.1}      ${xvdot*D3*0.1}       ${xwdot*D3*0.1}       ${xpdot*D4*0.1}      ${xqdot*D4*0.1}      ${-xrdot*D4*0.1}
+              ${yudot*D3*0.1}      ${yvdot*D3*0.1}       ${ywdot*D3*0.1}       ${ypdot*D4*0.1}      ${yqdot*D4*0.1}      ${-yrdot*D4*0.1}
+              ${zudot*D3*0.1}      ${zvdot*D3*0.1}       ${zwdot*D3*0.1}       ${zpdot*D4*0.1}      ${zqdot*D4*0.1}      ${-zrdot*D4*0.1}
+              ${kudot*D4*0.1}      ${kvdot*D4*0.1}       ${kwdot*D4*0.1}       ${kpdot*D5*0.1}      ${kqdot*D5*0.1}      ${-krdot*D5*0.1}
+              ${mudot*D4*0.1}      ${mvdot*D4*0.1}       ${mwdot*D4*0.1}       ${mpdot*D5*0.1}      ${mqdot*D5*0.1}      ${-mrdot*D5*0.1}
+              ${nudot*D4*0.1}      ${nvdot*D4*0.1}       ${nwdot*D4*0.1}       ${npdot*D5*0.1}      ${nqdot*D5*0.1}      ${-nrdot*D5*0.1}
           </added_mass>
           <!--<added_mass>
             1.432   0       0       0     0      0
@@ -176,7 +176,6 @@
             ${kuu*D3}      ${kuv*D3}       ${kuw*D3}       ${kup*D4}      ${kuq*D4}      ${kur*D4}
             ${muu*D3}      ${muv*D3}       ${muw*D3}       ${mup*D4}      ${muq*D4}      ${mur*D4}
             ${nuu*D3}      ${nuv*D3}       ${nuw*D3}       ${nup*D4}      ${nuq*D4}      ${nur*D4}
-          </quadratic_damping>
           </linear_damping_forward_speed>
           <!--
             The quadratic damping coefficients can be provided as a diagonal (6 elements)
