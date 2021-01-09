@@ -29,29 +29,29 @@
     </xacro:back_down_fin_macro>-->
 
     <!-- Instantiate fins, if necessary -->
-    <xacro:front_fin_macro namespace="${namespace}" fin_id="0" mesh_filename="${backup_front_fin_mesh_file}">
-        <origin xyz="2.18604 -0.46068 0.252" rpy="${0.5 * pi} 0 0" />
+    <xacro:front_fin_macro namespace="${namespace}" fin_id="0" mesh_filename="${front_right_fin_mesh_file}">
+        <origin xyz="2.18604 -0.46068 0.252" rpy="${-0.5 * pi} 0 0" />
     </xacro:front_fin_macro>
     
-    <xacro:front_fin_macro namespace="${namespace}" fin_id="1" mesh_filename="${backup_front_fin_mesh_file}">
-        <origin xyz="2.18604 0.46068 0.252" rpy="${1.5 * pi} 0 0" />
+    <xacro:front_fin_macro namespace="${namespace}" fin_id="1" mesh_filename="${front_left_fin_mesh_file}">
+        <origin xyz="2.18604 0.46068 0.252" rpy="${-0.5 * pi} 0 0" />
     </xacro:front_fin_macro>
     
-    <xacro:aft_fin_macro namespace="${namespace}" fin_id="2" mesh_filename="${backup_back_fin_mesh_file}">
-        <origin xyz="-3.44858 0.41165 0.08295" rpy="${0.5 * pi}  0 0" />
-    </xacro:aft_fin_macro>
+    <xacro:back_fin_macro namespace="${namespace}" fin_id="2" mesh_filename="${back_up_fin_mesh_file}">
+        <origin xyz="-3.44858 -0.41165 0.08295" rpy="${0.5 * pi}  0 0" />
+    </xacro:back_fin_macro>
     
-    <xacro:aft_fin_macro namespace="${namespace}" fin_id="3" mesh_filename="${backup_back_fin_mesh_file}">
-        <origin xyz="-3.44814 0 0.40858" rpy="${1 * pi} 0 0" />
-    </xacro:aft_fin_macro>
+    <xacro:back_fin_macro namespace="${namespace}" fin_id="3" mesh_filename="${back_up_fin_mesh_file}">
+        <origin xyz="-3.44814 0 0.40858" rpy="${0 * pi} 0 0" />
+    </xacro:back_fin_macro>
     
-    <xacro:aft_fin_macro namespace="${namespace}" fin_id="4" mesh_filename="${backup_back_fin_mesh_file}">
-        <origin xyz="-3.44858 -0.41165 0.08295" rpy="${1.5 * pi} 0 0" />
-    </xacro:aft_fin_macro>
+    <xacro:back_fin_macro namespace="${namespace}" fin_id="4" mesh_filename="${back_down_fin_mesh_file}">
+        <origin xyz="-3.44858 0.41165 0.08295" rpy="${0.5 * pi} 0 0" />
+    </xacro:back_fin_macro>
     
-    <xacro:aft_fin_macro namespace="${namespace}" fin_id="5" mesh_filename="${backup_back_fin_mesh_file}">
+    <xacro:back_fin_macro namespace="${namespace}" fin_id="5" mesh_filename="${back_down_fin_mesh_file}">
         <origin xyz="-3.44814 0 -0.40858" rpy="${0 * pi} 0 0" />
-    </xacro:aft_fin_macro>
+    </xacro:back_fin_macro>
 
 
 </robot>
