@@ -12,9 +12,9 @@
 
     <!-- Describing the dimensions of the vehicle's bounding box -->
     <xacro:property name="O_29qt_length" value="40.97"/>
-    <xacro:property name="O_29qt_width"  value="4.923"/>
-    <xacro:property name="O_29qt_radius"  value="2.4615"/>
-    <xacro:property name="O_29qt_height" value="4.923"/>
+    <xacro:property name="O_29qt_width"  value="7.8894"/>
+    <xacro:property name="O_29qt_radius"  value="2.4616"/>
+    <xacro:property name="O_29qt_height" value="7.4994"/>
     
     <!-- Added base parameters(ARMSAUA) -->
     <!--<xacro:property name="O_29qt_length" value="2.712"/>
@@ -149,21 +149,14 @@
         <hydrodynamic_model>
           <type>fossen</type>
           <added_mass>
-              ${-xudot*D3*0.1}      ${-xvdot*D3*0.1}       ${-xwdot*D3*0.1}       ${-xpdot*D4*0.1}      ${-xqdot*D4*0.1}      ${-xrdot*D4*0.1}
-              ${-yudot*D3*0.1}      ${-yvdot*D3*0.1}       ${-ywdot*D3*0.1}       ${-ypdot*D4*0.1}      ${-yqdot*D4*0.1}      ${-yrdot*D4*0.1}
-              ${-zudot*D3*0.1}      ${-zvdot*D3*0.1}       ${-zwdot*D3*0.1}       ${-zpdot*D4*0.1}      ${-zqdot*D4*0.1}      ${-zrdot*D4*0.1}
-              ${-kudot*D4*0.1}      ${-kvdot*D4*0.1}       ${-kwdot*D4*0.1}       ${-kpdot*D5*0.1}      ${-kqdot*D5*0.1}      ${-krdot*D5*0.1}
-              ${-mudot*D4*0.1}      ${-mvdot*D4*0.1}       ${-mwdot*D4*0.1}       ${-mpdot*D5*0.1}      ${-mqdot*D5*0.1}      ${-mrdot*D5*0.1}
-              ${-nudot*D4*0.1}      ${-nvdot*D4*0.1}       ${-nwdot*D4*0.1}       ${-npdot*D5*0.1}      ${-nqdot*D5*0.1}      ${-nrdot*D5*0.1}
+              ${xudot*D3*0.1}      ${xvdot*D3*0.1}       ${xwdot*D3*0.1}       ${xpdot*D4*0.1}      ${xqdot*D4*0.1}      ${xrdot*D4*0.1}
+              ${yudot*D3*0.1}      ${yvdot*D3*0.1}       ${ywdot*D3*0.1}       ${ypdot*D4*0.1}      ${yqdot*D4*0.1}      ${yrdot*D4*0.1}
+              ${zudot*D3*0.1}      ${zvdot*D3*0.1}       ${zwdot*D3*0.1}       ${zpdot*D4*0.1}      ${zqdot*D4*0.1}      ${zrdot*D4*0.1}
+              ${kudot*D4*0.1}      ${kvdot*D4*0.1}       ${kwdot*D4*0.1}       ${kpdot*D5*0.1}      ${kqdot*D5*0.1}      ${krdot*D5*0.1}
+              ${mudot*D4*0.1}      ${mvdot*D4*0.1}       ${mwdot*D4*0.1}       ${mpdot*D5*0.1}      ${mqdot*D5*0.1}      ${mrdot*D5*0.1}
+              ${nudot*D4*0.1}      ${nvdot*D4*0.1}       ${nwdot*D4*0.1}       ${npdot*D5*0.1}      ${nqdot*D5*0.1}      ${nrdot*D5*0.1}
           </added_mass>
-          <!--<added_mass>
-              1.432   0       0       0     0      0
-              0    120.645    0       0     0    4.895
-              0       0    130.513    0  -16.488   0
-              0       0       0    0.386    0      0
-              0       0   -16.488     0  78.266    0
-              0     4.895     0       0     0    67.489
-          </added_mass>-->
+
 
           <!--
             The linear damping coefficients can be provided as a diagonal (6 elements)
@@ -184,20 +177,17 @@
             This matrix is mostly useful for slender bodies (e.g. AUVs with torpedo shape)
           -->
           <linear_damping_forward_speed>
-            0 0 0 0 0 0
+            ${xuu*D2}      ${xuv*D2}       ${xuw*D2}       ${xup*D3}      ${xuq*D3}      ${xur*D3}
+            ${yuu*D2}      ${yuv*D2}       ${yuw*D2}       ${yup*D3}      ${yuq*D3}      ${yur*D3}
+            ${zuu*D2}      ${zuv*D2}       ${zuw*D2}       ${zup*D3}      ${zuq*D3}      ${zur*D3}
+            ${kuu*D3}      ${kuv*D3}       ${kuw*D3}       ${kup*D4}      ${kuq*D4}      ${kur*D4}
+            ${muu*D3}      ${muv*D3}       ${muw*D3}       ${mup*D4}      ${muq*D4}      ${mur*D4}
+            ${nuu*D3}      ${nuv*D3}       ${nuw*D3}       ${nup*D4}      ${nuq*D4}      ${nur*D4}
           </linear_damping_forward_speed>
           <!--
             The quadratic damping coefficients can be provided as a diagonal (6 elements)
             or a full matrix (36 coefficients), like the added-mass coefficients above
           -->
-          <quadratic_damping>
-              ${xuu*D2}      ${xuv*D2}       ${xuw*D2}       ${xup*D3}      ${xuq*D3}      ${xur*D3}
-              ${yuu*D2}      ${yuv*D2}       ${yuw*D2}       ${yup*D3}      ${yuq*D3}      ${yur*D3}
-              ${zuu*D2}      ${zuv*D2}       ${zuw*D2}       ${zup*D3}      ${zuq*D3}      ${zur*D3}
-              ${kuu*D3}      ${kuv*D3}       ${kuw*D3}       ${kup*D4}      ${kuq*D4}      ${kur*D4}
-              ${muu*D3}      ${muv*D3}       ${muw*D3}       ${mup*D4}      ${muq*D4}      ${mur*D4}
-              ${nuu*D3}      ${nuv*D3}       ${nuw*D3}       ${nup*D4}      ${nuq*D4}      ${nur*D4}
-          </quadratic_damping>
           <!--<quadratic_damping>
               -3.9     0      0      0     0      0
                 0  -373.287   0      0     0   -4.204

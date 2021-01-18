@@ -31,7 +31,8 @@
             <visual>
               <origin rpy="0 0 0" xyz="0 0 0"/>
               <geometry>
-                  <mesh filename="package://O_29qt/meshes/O_29_base.dae"/>
+                  <!--<mesh filename="package://O_29qt/meshes/0.21/O_29_base_0.21.dae" scale="1 1 1"/>-->
+                  <mesh filename="package://O_29qt/meshes/O_29_base.dae" scale="0.21 0.21 0.21"/>
               </geometry>
               <material name="">
                 <color rgba="1 0.0588235294117647 0.458823529411765 1"/>
@@ -40,7 +41,8 @@
             <collision>
               <origin rpy="0 0 0" xyz="0 0 0"/>
               <geometry>
-                <mesh filename="package://O_29qt/meshes/O_29_base.dae"/>
+                  <!--<mesh filename="package://O_29qt/meshes/0.21/O_29_base_0.21.dae" scale="1 1 1"/>-->
+                  <mesh filename="package://O_29qt/meshes/O_29_base.dae" scale="0.21 0.21 0.21"/>
               </geometry>
             </collision>
         </link> 

@@ -27,8 +27,8 @@
             <visual>
               <origin rpy="0 0 0" xyz="0 0 0"/>
               <geometry>
-                  <!--<mesh filename="package://O_29qt/meshes/base_link_ano.STL" scale="1 1 1"/>-->
-                  <mesh filename="file://$(find O_29qt)/meshes/O_29_base.dae" scale="1 1 1"/>
+                  <!--<mesh filename="file://$(find O_29qt)/meshes/O_29_base.dae" scale="1 1 1"/>-->
+                  <mesh filename="file://$(find O_29qt)/meshes/40m/O_29base_40m.dae" scale="1 1 1"/>
               </geometry>
               <!--<material name="">
                 <color rgba="1 0.0588235294117647 0.458823529411765 1"/>
@@ -37,8 +37,8 @@
             <collision>
               <origin rpy="0 0 0" xyz="0 0 0"/>
               <geometry>
-                  <!--<mesh filename="package://O_29qt/meshes/base_link_ano.STL" scale="1 1 1"/>-->
-                  <mesh filename="file://$(find O_29qt)/meshes/O_29_base.dae" scale="1 1 1"/>
+                  <!--<mesh filename="file://$(find O_29qt)/meshes/O_29_base.dae" scale="1 1 1"/>-->
+                  <mesh filename="file://$(find O_29qt)/meshes/40m/O_29base_40m.dae" scale="1 1 1"/>
               </geometry>
             </collision>
         </link> 
